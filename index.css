@@ -1,0 +1,31 @@
+@import "tailwindcss";
+* {
+  font-family: "Poppins", sans-serif;
+  scroll-behavior: smooth;
+}
+body {
+  background-color: #0f1204;
+  color: #f8ffe1;
+  overflow-x: hidden;
+}
+@font-face {
+  font-family: "neutra-font";
+  src: url("./font/neutra-text-bold-5871e1605afa2.otf");
+}
+@font-face {
+  font-family: "denton-font";
+  src: url("./font/DentonTest-LightItalic.otf");
+}
+
+.neutra-font {
+  font-family: "neutra-font";
+}
+.denton-font {
+  font-family: "denton-font";
+}
+.center-element {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
