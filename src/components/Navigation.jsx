@@ -8,7 +8,8 @@ import { NavLink } from "react-router";
 const Navigation = () => {
      const [isShow, setIsShow] = useState(false);
      useGSAP(() => {
-          gsap.from(".navigation", {
+          let tl = gsap.timeline();
+          tl.from(".navigation", {
                y: -20,
                opacity: 0,
                duration: 0.5,
@@ -16,8 +17,9 @@ const Navigation = () => {
                stagger: 0.2,
           });
      });
+
      return (
-          <header className="flex relative items-center justify-between max-w-7xl mx-auto md:py-6 py-4 px-2">
+          <header className="flex relative items-center justify-between max-w-7xl mx-auto py-4 px-2">
                <a href="/" className="flex items-center gap-1 navigation">
                     <div className="bg-yellow-500 rounded-md flex items-end justify-end text-black h-10 w-10 pr-1.25">
                          <span className="font-semibold neutra-font text-[17px]">
@@ -31,25 +33,33 @@ const Navigation = () => {
                </a>
 
                <div className="navigation md:hidden">
-                    {isShow ? (
-                         <button onClick={() => setIsShow(false)}>
-                              <HiOutlineXMark className="text-2xl" />
-                         </button>
-                    ) : (
-                         <button onClick={() => setIsShow(true)}>
-                              <CgMenuRightAlt className="text-2xl" />
-                         </button>
-                    )}
+                    <button
+                         onClick={() => {
+                              setIsShow(true);
+                         }}
+                    >
+                         <CgMenuRightAlt className="text-3xl" />
+                    </button>
                </div>
 
                {isShow && (
-                    <nav className="flex flex-col right-3 top-12 rounded-xl bg-white/5 p-5 absolute md:hidden items-start gap-3">
+                    <nav className="flex flex-col navAnimation absolute top-0 left-0 bg-black h-screen gap-10 p-5 pl-15 w-full">
+                         <div className="flex justify-end">
+                              <button
+                                   className="bg-white/10 rounded-full"
+                                   onClick={() => {
+                                        setIsShow(false);
+                                   }}
+                              >
+                                   <HiOutlineXMark className="text-4xl p-1" />
+                              </button>
+                         </div>
                          <NavLink
                               to={"/"}
                               className={({ isActive }) =>
                                    isActive
-                                        ? "text-white/50 text-[18px] navigation"
-                                        : "text-white text-[18px] navigation"
+                                        ? "text-white/50 text-4xl"
+                                        : "text-white text-4xl"
                               }
                          >
                               Home
@@ -58,8 +68,8 @@ const Navigation = () => {
                               to={"/about"}
                               className={({ isActive }) =>
                                    isActive
-                                        ? "text-white/50 text-[18px] navigation"
-                                        : "text-white text-[18px] navigation"
+                                        ? "text-white/50 text-4xl"
+                                        : "text-white text-4xl"
                               }
                          >
                               About
@@ -68,8 +78,8 @@ const Navigation = () => {
                               to={"/works"}
                               className={({ isActive }) =>
                                    isActive
-                                        ? "text-white/50 text-[18px] navigation"
-                                        : "text-white text-[18px] navigation"
+                                        ? "text-white/50 text-4xl"
+                                        : "text-white text-4xl"
                               }
                          >
                               Works
@@ -78,8 +88,8 @@ const Navigation = () => {
                               to={"/contact"}
                               className={({ isActive }) =>
                                    isActive
-                                        ? "text-white/50 text-[18px] navigation"
-                                        : "text-white text-[18px] navigation"
+                                        ? "text-white/50 text-4xl"
+                                        : "text-white text-4xl"
                               }
                          >
                               Contact
